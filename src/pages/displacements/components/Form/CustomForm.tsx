@@ -202,6 +202,8 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
               type='text'
               onChange={handleChange}
               onBlur={handleBlur}
+              rows={5}
+              multiline={true}
             />
 
           </FormControl>

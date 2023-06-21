@@ -1,5 +1,8 @@
 import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { Form } from "formik"
+import { useMemo } from "react";
+import MaskedInput from "react-text-mask";
+
 
 interface ICustomFormProps {
   values: any
@@ -15,6 +18,34 @@ interface ICustomFormProps {
 export function CustomForm({ values, errors, touched, handleChange, handleBlur, isSubmitting, setOpenPopup, isEdit }: ICustomFormProps) {
 
   const hasError = Object.keys(errors).length > 0
+
+
+  const mask = useMemo(() => {
+    switch (values.tipoDocumento) {
+      case 'CPF':
+        return [
+          /\d/, /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '-',
+          /\d/, /\d/,
+        ];
+      case 'RG':
+        return [
+          /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '-',
+          /\d/,
+        ];
+      case 'CNH':
+        return [
+          /\d/, /\d/, /\d/,
+          /\d/, /\d/, /\d/,
+          /\d/, /\d/, /\d/,
+          /\d/, /\d/,
+        ];
+    }
+  }, [values.tipoDocumento]);
+
 
 
   return (
@@ -153,10 +184,14 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
               label='Número do Documento'
               value={values.numeroDocumento}
               type='text'
-              disabled={isEdit}
+              disabled={isEdit || !mask}
               error={errors.numeroDocumento && touched.numeroDocumento ? true : false}
               onChange={handleChange}
               onBlur={handleBlur}
+              defaultValue={mask}
+              InputProps={{
+                inputComponent: TextMaskCustom
+              }}
             />
             {errors.numeroDocumento && touched.numeroDocumento && (
               <div style={{ color: 'red' }}>{errors.numeroDocumento}</div>
@@ -207,4 +242,27 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
     </Form >
 
   )
+}
+
+
+
+function TextMaskCustom(props: any) {
+  const { inputRef, defaultValue, ...other } = props;
+  return (
+    <MaskedInput
+      {...other}
+      mask={defaultValue
+        ? defaultValue
+        : [
+          /\d/, /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '.',
+          /\d/, /\d/, /\d/, '-',
+          /\d/, /\d/,
+        ]
+      }
+      placeholderChar={"\u2000"}
+      guide
+      keepCharPositions
+    />
+  );
 }
