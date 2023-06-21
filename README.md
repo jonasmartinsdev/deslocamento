@@ -74,10 +74,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/jonasmartinsdev/foodexplorer-frontend-.gitt>
+$ git clone <https://github.com/jonasmartinsdev/deslocamento.git>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd fe
+$ cd deslocamento
 
 # Renomeie o .env.example para .env.local
 
