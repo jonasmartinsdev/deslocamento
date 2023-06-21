@@ -79,6 +79,8 @@ $ git clone <https://github.com/jonasmartinsdev/foodexplorer-frontend-.gitt>
 # Acesse a pasta do projeto no terminal/cmd
 $ cd fe
 
+# Renomeie o .env.example para .env.local
+
 # Instale as dependências
 $ npm install
 
