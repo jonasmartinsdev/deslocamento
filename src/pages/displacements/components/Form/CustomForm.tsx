@@ -1,6 +1,7 @@
 import { useClientListQuery } from "@/store/queries/clientApi";
 import { useDriverListQuery } from "@/store/queries/driverApi";
 import { useVehicleListQuery } from "@/store/queries/vehicleApi";
+import { ClientData, DriverData, VehicleData } from "@/types";
 import { Autocomplete, Button, FormControl, Grid, TextField, Typography } from "@mui/material"
 
 import { Form } from "formik"
@@ -22,15 +23,20 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
 
   const { data: clients, } = useClientListQuery({
     refetchOnMountOrArgChange: true,
+    pollingInterval: 3000,
   })
 
 
   const { data: drivers, } = useDriverListQuery({
     refetchOnMountOrArgChange: true,
+    pollingInterval: 3000,
+
   })
 
   const { data: vehicles, } = useVehicleListQuery({
     refetchOnMountOrArgChange: true,
+    pollingInterval: 3000,
+
   })
 
   const hasError = Object.keys(errors).length > 0
@@ -46,8 +52,8 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Autocomplete
-                    options={drivers}
-                    getOptionLabel={(driver) => driver?.nome}
+                    options={drivers as DriverData[]}
+                    getOptionLabel={(driver) => driver.nome}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -59,7 +65,7 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
                       />
                     )}
                     onChange={(e, driver) => {
-                      setFieldValue('idCondutor', driver.id)
+                      setFieldValue('idCondutor', driver?.id)
                     }}
                   />
 
@@ -72,7 +78,7 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Autocomplete
-                    options={vehicles}
+                    options={vehicles as VehicleData[]}
                     getOptionLabel={(vehicle) => vehicle?.marcaModelo}
                     renderInput={(params) => (
                       <TextField
@@ -115,7 +121,7 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Autocomplete
-                    options={clients}
+                    options={clients as ClientData[]}
                     getOptionLabel={(client) => client?.nome}
                     renderInput={(params) => (
                       <TextField
@@ -127,7 +133,7 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
                       />
                     )}
                     onChange={(e, client) => {
-                      setFieldValue('idCliente', client.id)
+                      setFieldValue('idCliente', client?.id)
                     }}
 
                   />
@@ -210,11 +216,6 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
             variant='outlined'
             color='inherit'
             size='large'
-            disabled={isSubmitting}
-            sx={{
-              cursor: `${hasError ? 'not-allowed' : 'default'}`,
-            }}
-            title={hasError ? 'Please fill all the fields' : ''}
             fullWidth
             onClick={() => setOpenPopup(false)}
           >
@@ -237,10 +238,6 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
             color={hasError ? 'error' : 'primary'}
             size='large'
             disabled={isSubmitting}
-            sx={{
-              cursor: `${hasError ? 'not-allowed' : 'default'}`,
-            }}
-            title={hasError ? 'Please fill all the fields' : ''}
             fullWidth
           >
             <Typography
