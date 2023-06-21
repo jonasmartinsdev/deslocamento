@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Card, CircularProgress, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Divider, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
 import { VehicleTableToolbar } from "./VehicleTableToolbar";
 import { VehicleTableHead } from "./VehicleTableHead";
-import { useClientListQuery, useDeleteClientMutation } from "@/store/queries/clientApi";
+
 import { VehicleData } from "@/types";
 import { Error, Group } from "@mui/icons-material";
 import { useRouter } from "next/router";
@@ -12,7 +12,6 @@ import Modal from "@/components/Modal";
 import { useDeleteVehicleMutation, useVehicleListQuery } from "@/store/queries/vehicleApi";
 import moment from "moment";
 import 'moment/locale/pt-br';
-
 
 
 interface IClientFormDelete {

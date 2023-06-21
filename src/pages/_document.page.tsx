@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document'
 
 const Document: React.FC = () => {
   return (
-    <Html lang='en'>
+    <Html lang='pt-br'>
       <Head />
       <body>
         <Main />

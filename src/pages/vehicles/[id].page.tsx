@@ -64,7 +64,7 @@ export default function VehicleDetails() {
   return (
     <>
       <Head>
-        <title>Condutores Detalhes</title>
+        <title>Veiculo Detalhes</title>
       </Head>
       <Container
         sx={{

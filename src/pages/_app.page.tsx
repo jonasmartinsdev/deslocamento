@@ -1,7 +1,6 @@
 import DefaultLayout from '@/components/Layout/DefaultLayout'
 import { Provider } from 'react-redux'
 
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import { wrapper } from '@/store/store'
 import { ToastContainer } from 'react-toastify'
