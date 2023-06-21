@@ -6,7 +6,8 @@ import { useCreateVehicleMutation } from "@/store/queries/vehicleApi";
 
 
 const validationSchema = yup.object().shape({
-  anoFabricacao: yup.string().required('Este campo é obrigatório'),
+  anoFabricacao: yup.string().test('tamanho-ano', 'O ano deve ter 4 dígitos', (value) => value?.length === 4)
+    .required('Este campo é obrigatório'),
   placa: yup.string().required('Este campo é obrigatório'),
   marcaModelo: yup.string().required('Este campo é obrigatório'),
   kmAtual: yup.string().required('Este campo é obrigatório'),

@@ -60,6 +60,7 @@ export function CustomForm({ values, errors, touched, handleChange, handleBlur, 
             <TextField
               name='anoFabricacao'
               label='Ano'
+              inputProps={{ maxLength: "4" }}
               value={values.anoFabricacao}
               type='text'
               error={errors.anoFabricacao && touched.anoFabricacao ? true : false}
