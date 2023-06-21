@@ -174,10 +174,18 @@ export function DriverTable() {
                             pl: '2rem',
                           }}
                         >
+                          {row.id}
+                        </TableCell>
+                        <TableCell
+                          component='th'
+                          align='left'
+                          sx={{
+                            pl: '2rem',
+                          }}
+                        >
                           {moment(new Date(row.inicioDeslocamento)).locale('pt-br').format('LL LTS')}
                         </TableCell>
                         <TableCell component='th' align='left'>
-
 
                           {row.fimDeslocamento ?
                             moment(new Date(row.fimDeslocamento)).locale('pt-br').format('LL LTS')

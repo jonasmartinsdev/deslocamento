@@ -21,6 +21,12 @@ export interface IHeadCell {
 
 const headCells: readonly IHeadCell[] = [
   {
+    id: 'id',
+    numeric: false,
+    disablePadding: false,
+    label: 'ID',
+  },
+  {
     id: 'start',
     numeric: false,
     disablePadding: false,
