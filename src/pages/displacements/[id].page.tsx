@@ -151,7 +151,8 @@ export default function DisplacementDetails() {
                     Inicio deslocamento:
                   </Typography>
                   <Typography variant='body2'>
-                    {moment(new Date(data?.inicioDeslocamento)).locale('pt-br').format('LL')}
+
+                    {moment(new Date(data?.inicioDeslocamento)).locale('pt-br').format('LL LTS')}
                   </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -168,7 +169,7 @@ export default function DisplacementDetails() {
                     Fim deslocamento:
                   </Typography>
                   <Typography variant='body2'>
-                    {moment(new Date(data?.fimDeslocamento)).locale('pt-br').format('LL')}
+                    {moment(new Date(data?.fimDeslocamento)).locale('pt-br').format('LL LTS')}
                   </Typography>
                 </Box>
 
