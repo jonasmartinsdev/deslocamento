@@ -35,7 +35,7 @@ const data = [
   },
 ]
 
-const ContactsNavbar = styled(List)<{ component?: React.ElementType }>({
+const Navbar = styled(List)<{ component?: React.ElementType }>({
   '& .MuiListItemButton-root': {
     paddingLeft: 24,
     paddingRight: 24,
@@ -58,7 +58,7 @@ const Sidebar: React.FC = () => {
         elevation={0}
         sx={{ maxWidth: 300, overflow: 'hidden', borderRadius: 0 }}
       >
-        <ContactsNavbar
+        <Navbar
           component='nav'
           disablePadding
           sx={{
@@ -213,7 +213,7 @@ const Sidebar: React.FC = () => {
                 </ListItemButton>
               ))}
           </Box>
-        </ContactsNavbar>
+        </Navbar>
       </Paper>
     </Box>
   )
